@@ -1,0 +1,22 @@
+<mat-card class="music-thumbnail">
+  <mat-card-header>
+    <mat-card-title class="music-overview">{{music?.name}}</mat-card-title>
+    <mat-card-subtitle>{{music?.artistName}}</mat-card-subtitle>
+  </mat-card-header>
+  <img class="music-image" mat-card-image [src]="music?.imageUrl" [alt]="music?.name">
+  <mat-card-content class="music-overview">
+    Song {{music.name}} by 
+    {{music.artistName}}
+
+  </mat-card-content>
+  <mat-card-actions class="music-actions">
+    <button *ngIf="!usePlaylistApi" mat-button id="add-button" (click)="addToFavorites()" class="music-button"
+      color="primary">
+      <mat-icon>playlist_add</mat-icon>Add To
+      Playlist
+    </button>
+    <button *ngIf="usePlaylistApi" mat-button (click)="deleteFromFavorites()" class="music-button" color="primary">
+      <mat-icon>delete</mat-icon>Delete
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,4 @@
+<div class="music-container">
+  <app-music-card *ngFor="let music of musics" [music]="music" [usePlaylistApi]="usePlaylistApi"
+    (addMusic)="addToPlaylist($event)" (deleteMusic)="deleteFromPlaylist($event)"></app-music-card>
+</div>

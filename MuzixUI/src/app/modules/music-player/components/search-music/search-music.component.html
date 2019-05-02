@@ -1,0 +1,9 @@
+<div class="flex-container">
+  <form class="example-form">
+    <mat-form-field>
+      <input id="search-button-input" appearance="outline" matInput type="text" #box (keyup.enter)="onEnter(box.value)">
+      <mat-placeholder>Search your muse Here!</mat-placeholder>
+    </mat-form-field>
+  </form>
+</div>
+<app-container [musics]="musics"></app-container>

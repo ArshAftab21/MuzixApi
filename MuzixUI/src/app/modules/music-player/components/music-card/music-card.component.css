@@ -1,0 +1,29 @@
+.music-thumbnail {
+    width: 150px;
+    margin: 10px;
+    margin-top: 10px;
+    padding: 1rem;
+}
+
+.music-image {
+    height:180px;
+}
+
+.music-overview {
+    height: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.music-overview::-webkit-scrollbar {
+    width: 2px;
+    background: rgb(190, 176, 176);
+}
+
+.music-actions{
+    text-align: right;
+
+}
+.music-button {
+    font-size: 20px;
+}

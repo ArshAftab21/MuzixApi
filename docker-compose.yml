@@ -1,0 +1,43 @@
+--- 
+services: 
+  angular: 
+    build: MuzixUI/
+    container_name: music-angular-docker
+    image: music-angular-image
+    network_mode: host
+    ports: 
+      - "4200:4200"
+  mysql: 
+    environment: 
+      MYSQL_DATABASE: musicdb
+      MYSQL_PASSWORD: root1
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: musicroot
+    image: "mysql:5.5"
+    network_mode: host
+    ports: 
+      - "3306:3306"
+    restart: always
+  spring: 
+    build: muzixmanager/
+    depends_on: 
+      - mysql
+    expose: 
+      - "8088"
+    image: music-spring-image
+    network_mode: host
+    ports: 
+      - "8088:8088"
+    restart: always
+  user-app: 
+    build: accountmanager/
+    depends_on: 
+      - mysql
+    expose: 
+      - 8089
+    image: music-user-app
+    network_mode: host
+    ports: 
+      - "8089:8089"
+    restart: always
+version: "3"

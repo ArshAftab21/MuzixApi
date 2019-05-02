@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Muzix Player</span>
+      
+        <span fxShow="true" fxHide.lt-md>
+        <button mat-button [routerLink]="['/music/gettoptracks']">Tracks</button>
+        <!-- <button mat-button [routerLink]="['/music/gettopalbums']">Top Albums</button> -->
+        <button mat-button [routerLink]="['/music/playlist']">Playlist</button>
+        <button class="search-button" mat-button [routerLink]="['/music/search']">Search</button>
+        
+      </span>
+      <span  class="menu-spacer"></span>
+      <span *ngIf="!auth.isTokenExpired()" fxShow="true" fxHide.lt-md>
+        <button mat-button (click)="logout()">Logout</button>
+      </span>
+      <span *ngIf="auth.isTokenExpired()" fxShow="true" fxHide.lt-md>
+        <button mat-button [routerLink]="['/login']">Login</button>
+      </span>
+      
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/music/gettoptracks']">Tracks</a>
+        <!-- <a mat-list-item [routerLink]="['/music/gettopalbums']">Top Rated Movie</a> -->
+        <a mat-list-item [routerLink]="['/music/playlist']">MyPlaylist</a>
+        <a class="search-button" mat-list-item [routerLink]="['/music/search']">Search</a>
+        <a *ngIf="!auth.isTokenExpired()" mat-list-item (click)="logout()">Logout</a>
+        <a *ngIf="auth.isTokenExpired()" mat-list-item [routerLink]="['/login']">Login</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+
+<router-outlet></router-outlet>
